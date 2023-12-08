@@ -1,0 +1,19 @@
+[Unit]
+Description=Keep the host online in CityU HK intranet
+
+[Service]
+# Put your username and password of AIMS here.
+# Keep this unit file in mode 400 to protect your secret.
+Environment=AIMS_USERNAME=balabala
+Environment=AIMS_PASSWORD=pucapuca
+# Or, override the previous options in the env file
+EnvironmentFile=-/etc/default/cityu-intranet-keep-online
+# Or, use the secret management offered by systemd.
+# You need to check the documentation on your own though.
+# https://systemd.io/CREDENTIALS/ should help.
+ExecStart=/usr/bin/cityu-intranet-keep-online
+User=nobody
+Group=nobody
+
+[Install]
+WantedBy=multi-user.target
